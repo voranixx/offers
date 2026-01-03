@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VORANIX | Where Power Hires Power</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --voranix-black: #000000;
+            --voranix-gray: #111111;
+            --voranix-light-gray: #222222;
+            --voranix-red: #e3000b;
+            --voranix-red-dark: #b00008;
+            --voranix-red-light: #ff4d4d;
+            --voranix-green: #2ecc71;
+            --voranix-yellow: #f1c40f;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --border-color: #333333;
+        }
+        
+        body {
+            background-color: var(--voranix-black);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, var(--voranix-gray), var(--voranix-black));
+            padding: 20px 0;
+            border-bottom: 2px solid var(--voranix-red);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo-text {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--voranix-red);
+            text-transform: uppercase;
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(227, 0, 11, 0.3);
+        }
+        
+        .logo-tagline {
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            margin-top: 2px;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 40px 0;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-title h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: var(--voranix-red);
+            text-shadow: 0 0 5px rgba(227, 0, 11, 0.2);
+        }
+        
+        .page-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Profile Form */
+        .profile-form-section {
+            background-color: var(--voranix-gray);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: var(--voranix-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            font-size: 20px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        select, input {
+            padding: 12px 15px;
+            background-color: var(--voranix-light-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--voranix-red);
+            box-shadow: 0 0 0 2px rgba(227, 0, 11, 0.2);
+        }
+        
+        .flexibility-options {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(227, 0, 11, 0.05);
+            border-radius: 6px;
+            border: 1px solid rgba(227, 0, 11, 0.2);
+        }
+        
+        .flexibility-title {
+            color: var(--voranix-red);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .flexibility-options label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        
+        .flexibility-options input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--voranix-red);
+        }
+        
+        .form-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--voranix-red);
+            color: var(--text-primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--voranix-red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(227, 0, 11, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: var(--voranix-light-gray);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #333333;
+        }
+        
+        /* Results Section */
+        .results-section {
+            background-color: var(--voranix-gray);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .match-count {
+            background-color: var(--voranix-red);
+            color: var(--text-primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .job-card {
+            background-color: var(--voranix-light-gray);
+            border-radius: 6px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--voranix-red);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(227, 0, 11, 0.2);
+            border-color: var(--voranix-red);
+        }
+        
+        .job-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .status-active {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--voranix-green);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+        
+        .status-hold {
+            background-color: rgba(241, 196, 15, 0.1);
+            color: var(--voranix-yellow);
+            border: 1px solid rgba(241, 196, 15, 0.3);
+        }
+        
+        .job-company {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--voranix-red);
+        }
+        
+        .job-account {
+            font-size: 16px;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        
+        .job-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .detail-item i {
+            color: var(--voranix-red);
+            width: 16px;
+        }
+        
+        .job-match {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .match-percentage {
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .match-high {
+            color: var(--voranix-green);
+        }
+        
+        .match-medium {
+            color: var(--voranix-yellow);
+        }
+        
+        .match-low {
+            color: var(--voranix-red-light);
+        }
+        
+        .btn-view {
+            background-color: transparent;
+            color: var(--voranix-red);
+            border: 1px solid var(--voranix-red);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-view:hover {
+            background-color: var(--voranix-red);
+            color: var(--text-primary);
+        }
+        
+        /* Match indicators */
+        .match-indicators {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .match-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        .match-language {
+            background-color: rgba(227, 0, 11, 0.1);
+            color: var(--voranix-red);
+            border: 1px solid rgba(227, 0, 11, 0.3);
+        }
+        
+        .match-location {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--voranix-green);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--voranix-gray);
+            margin: 50px auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+            border: 1px solid var(--voranix-red);
+            box-shadow: 0 10px 30px rgba(227, 0, 11, 0.2);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--voranix-red);
+        }
+        
+        .modal-job-header {
+            margin-bottom: 25px;
+        }
+        
+        .modal-job-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .detail-box {
+            background-color: var(--voranix-light-gray);
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .detail-box h4 {
+            color: var(--voranix-red);
+            margin-bottom: 10px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .offer-details {
+            background-color: var(--voranix-light-gray);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--voranix-gray);
+            padding: 30px 0;
+            border-top: 2px solid var(--voranix-red);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            color: var(--voranix-red);
+            text-shadow: 0 0 10px rgba(227, 0, 11, 0.3);
+        }
+        
+        .footer-tagline {
+            color: var(--text-secondary);
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .modal-job-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 28px;
+                letter-spacing: 3px;
+            }
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .spinner i {
+            font-size: 40px;
+            color: var(--voranix-red);
+            animation: spin 1.5s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Filter tags */
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .filter-tag {
+            background-color: rgba(227, 0, 11, 0.1);
+            color: var(--voranix-red);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            border: 1px solid rgba(227, 0, 11, 0.3);
+        }
+        
+        /* Requirement warnings */
+        .requirement-warning {
+            color: var(--voranix-red-light);
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Badges */
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        
+        .badge-nearby {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: var(--voranix-green);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+        
+        .badge-language-match {
+            background-color: rgba(227, 0, 11, 0.2);
+            color: var(--voranix-red);
+            border: 1px solid rgba(227, 0, 11, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-text">VORANIX</div>
+                <div class="logo-tagline">Where Power Hires Power.</div>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary" id="resetBtn">
+                    <i class="fas fa-redo"></i> Reset Filters
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="page-title">
+                <h1>Smart Job Matching</h1>
+                <p>Tell us about yourself and we'll find the most suitable job offers from VORANIX's extensive network of opportunities.</p>
+            </div>
+            
+            <!-- Profile Form -->
+            <section class="profile-form-section">
+                <h2 class="section-title"><i class="fas fa-user-cog"></i> Your Profile</h2>
+                <form id="profileForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="age">Your Age</label>
+                            <input type="number" id="age" min="16" max="60" value="25" required>
+                            <div class="requirement-warning" id="ageWarning">Some jobs have age restrictions</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="status">Graduation Status</label>
+                            <select id="status" required>
+                                <option value="undergrad">Undergraduate Student</option>
+                                <option value="grad">Graduate</option>
+                                <option value="gap-year">Gap Year</option>
+                                <option value="dropout">Dropout</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="english">English Level</label>
+                            <select id="english" required>
+                                <option value="B1">B1 (Intermediate)</option>
+                                <option value="B2">B2 (Upper Intermediate)</option>
+                                <option value="C1">C1 (Advanced)</option>
+                                <option value="C2">C2 (Proficient)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Nearest Area</label>
+                            <select id="location" required>
+                                <option value="nasr-city">Nasr City</option>
+                                <option value="maadi">Maadi</option>
+                                <option value="sheikh-zayed">Sheikh Zayed</option>
+                                <option value="new-cairo">New Cairo</option>
+                                <option value="downtown">Downtown Cairo</option>
+                                <option value="alexandria">Alexandria</option>
+                                <option value="remote">Work From Home</option>
+                                <option value="any">Any Location</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nationality">Nationality</label>
+                            <select id="nationality" required>
+                                <option value="egyptian">Egyptian</option>
+                                <option value="foreigner">Foreigner</option>
+                                <option value="both">Both Egyptian & Foreigner</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experience">Experience in Sales/CS</label>
+                            <select id="experience" required>
+                                <option value="none">No Experience</option>
+                                <option value="0-1">0-1 Year</option>
+                                <option value="1-3">1-3 Years</option>
+                                <option value="3+">3+ Years</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Flexibility Options -->
+                    <div class="flexibility-options">
+                        <div class="flexibility-title">
+                            <i class="fas fa-sliders-h"></i> Search Flexibility Options
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" id="flexibleLanguage" checked>
+                                <span>Show jobs with similar language requirements</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="flexibleLocation" checked>
+                                <span>Show jobs in nearby locations</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="flexibleAge" checked>
+                                <span>Show jobs with slightly higher age limits</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary" id="findJobsBtn">
+                            <i class="fas fa-search"></i> Find Matching Jobs
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="clearBtn">
+                            <i class="fas fa-times"></i> Clear Form
+                        </button>
+                    </div>
+                </form>
+            </section>
+            
+            <!-- Results Section -->
+            <section class="results-section">
+                <div class="results-header">
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i> Matching Job Offers</h2>
+                    <div class="match-count" id="matchCount">0 matches</div>
+                </div>
+                
+                <div class="spinner" id="loadingSpinner">
+                    <i class="fas fa-spinner"></i>
+                    <p>Finding your perfect matches...</p>
+                </div>
+                
+                <div class="results-grid" id="resultsGrid">
+                    <!-- Job cards will be inserted here by JavaScript -->
+                    <div class="no-results" id="noResults" style="text-align: center; grid-column: 1/-1; padding: 40px; color: var(--text-secondary);">
+                        <i class="fas fa-search" style="font-size: 50px; margin-bottom: 20px;"></i>
+                        <h3>No matches yet</h3>
+                        <p>Fill out your profile and click "Find Matching Jobs" to see offers that fit your criteria.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Job Detail Modal -->
+    <div class="modal" id="jobModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div id="modalContent">
+                <!-- Modal content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    </footer>
+    
+    <script>
+        // Job offers data - extracted from the provided text
+        const jobOffers = [
+            {
+                id: 1,
+                status: "Active",
+                company: "Teleperformance",
+                account: "Customer Service",
+                shifts: "Rotational Shifts",
+                interview: "Call Interview",
+                location: "5th Settlement, Cairo",
+                graduation: "Undergrads - Grads - Dropout - Gap year",
+                nationality: "Egyptians Only",
+                maxAge: 45,
+                language: "English B1+ → C1",
+                languageRequirement: "B1",
+                salary: "Up to 18.5K Net",
+                process: "They Receive a Call Interview",
+                training: "30 days",
+                details: "Customer Service Representative position with salary up to 18,500 EGP NET. Benefits include paid training, social & medical insurance, transportation provided, and gym access. Egyptians only with English B1+ to C1 level. Graduates, dropouts, gap-year students, and undergrads welcome.",
+                locationType: "office"
+            },
+            {
+                id: 2,
+                status: "Active",
+                company: "BPO HIVE",
+                account: "US Account",
+                shifts: "US Time zone depends on the account",
+                interview: "Validation, then phone interview",
+                location: "WORK FROM HOME",
+                graduation: "undergrads /grads/ gap year / dropouts",
+                nationality: "Egyptians / Foreigners",
+                maxAge: 35,
+                language: "C1/C2",
+                languageRequirement: "C1",
+                salary: "20K Net + Unlimited Commission",
+                process: "Validation, then phone interview",
+                training: "30 Days",
+                details: "Call Center Agent / Cold Calling position working from home. Must be located in Egypt. Payment in USD. Salary package: 20,000 EGP Net + Unlimited commissions. No experience required but preferred. Weekly & monthly performance bonuses. Flexible, remote work environment.",
+                locationType: "remote"
+            },
+            {
+                id: 3,
+                status: "Active",
+                company: "IntouchCX (French 🇫🇷)",
+                account: "Customer Service",
+                shifts: "Rotational shifts",
+                interview: "Validation, then assessment, then virtual interview",
+                location: "Sheikh Zayed",
+                graduation: "Grads Only",
+                nationality: "Egyptians only",
+                maxAge: 47,
+                language: "C1 French, B2 English",
+                languageRequirement: "C1",
+                salary: "39k Gross",
+                process: "Validation, then assessment, then virtual interview",
+                training: "30 days",
+                details: "Bilingual French Customer Service Account - call center role (voice customer support). Onsite interview (candidates will first receive a call from the recruitment team). No previous experience required. Egyptians only. Graduates only. Requirements: French C1, English B2.",
+                locationType: "office"
+            },
+            {
+                id: 4,
+                status: "Active",
+                company: "Creative Basket",
+                account: "Travel Advisor",
+                shifts: "Fixed Shifts 3:00 PM To 12:00 PM",
+                interview: "Monday To Thursday From 3 PM To 7 PM",
+                location: "Nasr City",
+                graduation: "undergrads /grads/ gap year / dropouts",
+                nationality: "Egyptians / Foreigners",
+                maxAge: 40,
+                language: "B2/C1",
+                languageRequirement: "B2",
+                salary: "From 9K Up to 15K Depends on the Experience",
+                process: "They directly go to the interview after filling the form",
+                training: "2 Weeks",
+                details: "Travel Industry Telesales (Opener) position. Requirements: English level B2–C1 (must). Minimum 3 months telesales experience (travel industry is a must). Offer: Basic salary 9K – 15K (based on experience). Transportation allowance included. Commission: $1 per night.",
+                locationType: "office"
+            },
+            {
+                id: 5,
+                status: "Hold",
+                company: "VORANIX",
+                account: "US Account",
+                shifts: "Fixed Shifts 6:00 PM To 3:00 AM",
+                interview: "Call interview then a virtual interview if you pass the call",
+                location: "WORK FROM HOME",
+                graduation: "undergrads /grads/ gap year / dropouts",
+                nationality: "Egyptians / Foreigners",
+                maxAge: 30,
+                language: "C1/C2",
+                languageRequirement: "C1",
+                salary: "20K Net",
+                process: "Virtual Interview",
+                training: "3 days",
+                details: "Upselling Specialist (Remote). VORANIX is expanding, and we're looking for confident, high-energy sales talent. Requirements: Strong experience in sales or cold calling, C1 English level, comfortable with high-volume outbound calls, competitive mindset and strong closing skills. Shift: 6 PM – 3 AM Egypt time.",
+                locationType: "remote"
+            },
+            {
+                id: 6,
+                status: "Active",
+                company: "IntouchCX English 🇺🇸",
+                account: "USA Account",
+                shifts: "3:45Pm till 1:00Am / 4:00Pm till 1:30Am",
+                interview: "Monday To Friday From 6 PM To 8 PM",
+                location: "Elmokattam",
+                graduation: "undergrads /grads/ gap year / dropouts",
+                nationality: "Egyptians / Foreigners",
+                maxAge: 47,
+                language: "C1",
+                languageRequirement: "C1",
+                salary: "15K up to 20K Net + Uncapped Commission in USD",
+                process: "They directly go to the interview after filling the form",
+                training: "2 Weeks",
+                details: "Telesales position with salary 15K – 20K NET + Uncapped USD Commission (Avg 350$). Requirements: C1 English level, graduates/dropouts/gap year, previous sales experience, flexibility with night shifts. Benefits: Social & Medical insurance after 6 months, strong learning & development curve.",
+                locationType: "office"
+            },
+            {
+                id: 7,
+                status: "Active",
+                company: "Ultatek",
+                account: "US Account",
+                shifts: "Fixed Shifts 3:30 PM To 12:30 PM",
+                interview: "Call Interview",
+                location: "Maadi",
+                graduation: "Grads/ Gap year/ Dropout",
+                nationality: "Egyptians / Foreigners",
+                maxAge: 47,
+                language: "B2+/C1",
+                languageRequirement: "C1",
+                salary: "Basic 345$ + KPIS & Transportation Allowance",
+                process: "They Receive a Call Interview",
+                training: "30 days",
+                details: "Business developer representatives for an appointment setter US account. Immediate hiring! Net salary: 345$, Transportation allowance:42$, KPIs:30$, commission in dollars. Medical and social and contract after 3 months probation. Saturday and Sunday off. Shift: 3.30 pm till 12:30 am.",
+                locationType: "office"
+            },
+            {
+                id: 8,
+                status: "Active",
+                company: "TTC",
+                account: "UK Account",
+                shifts: "Fixed 12:00PM till 8:00PM",
+                interview: "Monday To Friday From 3 PM To 5 PM",
+                location: "Alexandria (Fleming)",
+                graduation: "Grads / Undergrads / Gap Year / Drop out",
+                nationality: "Egyptians Only",
+                maxAge: 28,
+                language: "English B2+",
+                languageRequirement: "B2",
+                salary: "12k Net + Commissions starts from 2k + 1k KPIS",
+                process: "They directly go to the interview after filling the form",
+                training: "30 days",
+                details: "Telesales Agents for a UK Account. Requirements: Excellent to Fluent English (B2–C1 Level), British Accent (Preferably), No experience needed, Egyptians only (19–28 years old). Salary: 12,000 EGP Net + 1,000 EGP KPIs bonus + Unlimited Commissions. Paid Training. Fixed Shift: 12:00 PM – 8:00 PM.",
+                locationType: "office"
+            },
+            {
+                id: 9,
+                status: "Active",
+                company: "BuzzCx English 🇺🇸",
+                account: "UK Account",
+                shifts: "Fixed Shifts 11:00 AM To 7:00 PM",
+                interview: "Call Interview",
+                location: "Nasr City",
+                graduation: "Grads/Undergrads",
+                nationality: "Egyptians / Foreigners",
+                maxAge: 35,
+                language: "English B2+/C1",
+                languageRequirement: "B2",
+                salary: "10K Net + Commission",
+                process: "They Receive a Call Interview",
+                training: "1 Month",
+                details: "English Cold Calling Agents. We are expanding our English Account and looking for confident, motivated Cold Calling Agents. Fluent English (B2+ or C1 level). Experience in Telesales or Cold Calling is a strong advantage. Foreigners can apply only if they have an active bank account in Egypt.",
+                locationType: "office"
+            },
+            {
+                id: 10,
+                status: "Active",
+                company: "VolumeX",
+                account: "DME Account",
+                shifts: "Fixed Shifts 4:00 PM To 12:00 AM",
+                interview: "Monday To Friday From 5:00 PM To 7:00 PM",
+                location: "WFH",
+                graduation: "undergrads /grads/ gap year / dropouts",
+                nationality: "Egyptians / Foreigners",
+                maxAge: 30,
+                language: "B2/C1",
+                languageRequirement: "B2",
+                salary: "215 EGP Per Hour + Commission",
+                process: "They receive a phone call interview",
+                training: "2 weeks",
+                details: "Full-Time Acquisition Specialist (Remote). Shift: 4:00 PM – 12:00 AM (Cairo time). Salary: 215 EGP/hour + attractive commission (Average 35,000 EGP/month once fully active). Requirements: Excellent English skills (C1–C2 level, written & spoken), previous experience in real estate roles is a MUST. Foreigners can apply.",
+                locationType: "remote"
+            },
+            {
+                id: 11,
+                status: "Active",
+                company: "LTS",
+                account: "Survey Agent",
+                shifts: "Fixed Shifts",
+                interview: "Phone Interview",
+                location: "Sheraton",
+                graduation: "undergrads /grads/ gap year / dropouts",
+                nationality: "Egyptians Only",
+                maxAge: 40,
+                language: "B2/C1",
+                languageRequirement: "B2",
+                salary: "Basic 12K + 2K KPIS + Commission",
+                process: "They Receive a Call Interview",
+                training: "30 Days",
+                details: "Hotel Survey Agent position. Requirements: Fluent English Speakers, Call Center Experience is a plus (not required), Graduates & Undergraduates are welcome. Package: Basic Salary: 12,000 EGP, KPIS: 2000 EGP, Unlimited Commission, Performance Bonus, Medical Insurance After 3 Months.",
+                locationType: "office"
+            },
+            {
+                id: 12,
+                status: "Active",
+                company: "FOODHUB",
+                account: "Telesales",
+                shifts: "Fixed Shifts 2:00 PM To 11:00 PM",
+                interview: "Monday To Thursday From 3 PM To 9:00 PM",
+                location: "October City",
+                graduation: "Grads Only",
+                nationality: "Egyptians Only",
+                maxAge: 20,
+                language: "B2/C1 + Exp in Telesales",
+                languageRequirement: "B2",
+                salary: "Basic 17K + Commission",
+                process: "They directly go to the interview after filling the form",
+                training: "2 Weeks",
+                details: "Food hub offer: 12k basic + 3k kpis+ 1k sales bonus + 1k medical insurance. Basic 17k + unlimited commission. Transportation provided. Grads only, males only. Fixed Shifts: from 2pm to 11pm. Paid training. Experience: minimum 6 months in telesales.",
+                locationType: "office"
+            },
+            {
+                id: 13,
+                status: "Active",
+                company: "Datalytics",
+                account: "Travel Advisor",
+                shifts: "Fixed Shifts 3:00 PM To 12:00 PM",
+                interview: "Monday To Thursday From 3 PM To 7 PM",
+                location: "Nasr City",
+                graduation: "undergrads /grads/ gap year / dropouts",
+                nationality: "Egyptians / Foreigners",
+                maxAge: 35,
+                language: "B2/C1",
+                languageRequirement: "B2",
+                salary: "From 9K Up to 15K Depends on the Experience",
+                process: "They directly go to the interview after filling the form",
+                training: "2 Weeks",
+                details: "Travel Advisor position with opportunities for growth. Requirements: B2/C1 English level, experience in travel industry preferred but not required. Fixed shifts with competitive salary and commission structure.",
+                locationType: "office"
+            },
+            {
+                id: 14,
+                status: "Active",
+                company: "CNS",
+                account: "USA ACCOUNT",
+                shifts: "Fixed 3:00Pm till 11:00Pm",
+                interview: "Monday to Friday 4:30Pm till 8:30Pm",
+                location: "Nasr City",
+                graduation: "undergrads /grads/ gap year / dropouts",
+                nationality: "Egyptians / Foreigners",
+                maxAge: 27,
+                language: "English B2/B2+",
+                languageRequirement: "B2",
+                salary: "10k Net + Commissions up to 20k",
+                process: "They directly go to the interview after filling the form",
+                training: "3 weeks",
+                details: "Fluent/Excellent English Speakers for Telesales Vacancy in USA Campaign. No experience needed. Graduates & Undergraduates are welcome. Working days: Monday - Friday. Saturdays and Sundays are OFF. 5 Days Training (Paid).",
+                locationType: "office"
+            },
+            {
+                id: 15,
+                status: "Active",
+                company: "Callix",
+                account: "Telesales Account",
+                shifts: "Fixed Shifts 4:30 PM To 1:00 AM",
+                interview: "Monday To Friday From 4 To 9 PM",
+                location: "Nasr City",
+                graduation: "female & males grads \\ undergrads",
+                nationality: "Egyptians / Foreigners",
+                maxAge: 30,
+                language: "B2+ / C1",
+                languageRequirement: "B2",
+                salary: "Basic Salary 11.5K + 2K Kpis",
+                process: "They directly go to the interview after filling the form",
+                training: "1~2 Weeks",
+                details: "Telesales Agent position. Requirements: B2+ / C1 English level. Experience in telesales is preferred. Fixed evening shifts with competitive basic salary plus KPIs.",
+                locationType: "office"
+            }
+        ];
+
+        // DOM elements
+        const profileForm = document.getElementById('profileForm');
+        const findJobsBtn = document.getElementById('findJobsBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const matchCount = document.getElementById('matchCount');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const noResults = document.getElementById('noResults');
+        const jobModal = document.getElementById('jobModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalContent = document.getElementById('modalContent');
+        const ageWarning = document.getElementById('ageWarning');
+        const flexibleLanguage = document.getElementById('flexibleLanguage');
+        const flexibleLocation = document.getElementById('flexibleLocation');
+        const flexibleAge = document.getElementById('flexibleAge');
+
+        // Current filtered jobs
+        let filteredJobs = [];
+
+        // Location proximity mapping
+        const locationProximity = {
+            'nasr-city': ['nasr-city', 'new-cairo', 'downtown', 'heliopolis'],
+            'maadi': ['maadi', 'new-cairo', 'october city', 'sheikh-zayed'],
+            'sheikh-zayed': ['sheikh-zayed', 'october city', 'new-cairo', '6th of october'],
+            'new-cairo': ['new-cairo', 'nasr-city', 'heliopolis', 'maadi'],
+            'downtown': ['downtown', 'nasr-city', 'garden city', 'zamalek'],
+            'alexandria': ['alexandria', 'fleming'],
+            'remote': ['remote', 'wfh', 'work from home'],
+            'any': ['nasr-city', 'maadi', 'sheikh-zayed', 'new-cairo', 'downtown', 'alexandria', 'remote', 'wfh']
+        };
+
+        // Language level mapping with flexibility
+        const languageLevels = {
+            'B1': 1,
+            'B2': 2,
+            'C1': 3,
+            'C2': 4
+        };
+        
+        // Language proximity - which levels are close to each other
+        const languageProximity = {
+            'B1': ['B1', 'B2'], // B1 is close to B1 and B2
+            'B2': ['B1', 'B2', 'C1'], // B2 is close to B1, B2, and C1
+            'C1': ['B2', 'C1', 'C2'], // C1 is close to B2, C1, and C2
+            'C2': ['C1', 'C2'] // C2 is close to C1 and C2
+        };
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default values
+            document.getElementById('age').value = 25;
+            document.getElementById('status').value = 'grad';
+            document.getElementById('english').value = 'B2';
+            document.getElementById('location').value = 'nasr-city';
+            document.getElementById('nationality').value = 'egyptian';
+            document.getElementById('experience').value = '0-1';
+            
+            // Set flexibility options to checked by default
+            flexibleLanguage.checked = true;
+            flexibleLocation.checked = true;
+            flexibleAge.checked = true;
+            
+            // Add event listeners
+            profileForm.addEventListener('submit', findMatchingJobs);
+            clearBtn.addEventListener('click', clearForm);
+            resetBtn.addEventListener('click', resetFilters);
+            closeModal.addEventListener('click', () => {
+                jobModal.style.display = 'none';
+            });
+            
+            // Show age warning when age is high
+            document.getElementById('age').addEventListener('input', function() {
+                if (this.value > 35) {
+                    ageWarning.style.display = 'block';
+                } else {
+                    ageWarning.style.display = 'none';
+                }
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === jobModal) {
+                    jobModal.style.display = 'none';
+                }
+            });
+        });
+
+        // Find matching jobs based on user profile with flexibility
+        function findMatchingJobs(e) {
+            e.preventDefault();
+            
+            // Show loading spinner
+            loadingSpinner.style.display = 'block';
+            resultsGrid.innerHTML = '';
+            noResults.style.display = 'none';
+            
+            // Get user inputs
+            const age = parseInt(document.getElementById('age').value);
+            const status = document.getElementById('status').value;
+            const english = document.getElementById('english').value;
+            const location = document.getElementById('location').value;
+            const nationality = document.getElementById('nationality').value;
+            const experience = document.getElementById('experience').value;
+            
+            // Get flexibility options
+            const isFlexibleLanguage = flexibleLanguage.checked;
+            const isFlexibleLocation = flexibleLocation.checked;
+            const isFlexibleAge = flexibleAge.checked;
+            
+            // User's English level
+            const userEnglishLevel = languageLevels[english];
+            
+            // Filter jobs (simulate loading with timeout)
+            setTimeout(() => {
+                filteredJobs = jobOffers.filter(job => {
+                    let matchScore = 100; // Start with 100%
+                    let isMatch = true;
+                    let isNearbyLocation = false;
+                    let isCloseLanguage = false;
+                    
+                    // 1. Age check with flexibility
+                    const ageDifference = age - job.maxAge;
+                    if (age > job.maxAge) {
+                        if (isFlexibleAge && ageDifference <= 5) {
+                            // Allow if within 5 years of max age and flexibility is enabled
+                            matchScore -= (ageDifference * 5); // Deduct points based on age difference
+                        } else {
+                            return false; // Skip job completely
+                        }
+                    } else if (age > (job.maxAge - 5)) {
+                        matchScore -= 10; // If close to max age
+                    }
+                    
+                    // 2. Graduation status check
+                    const statusMap = {
+                        'undergrad': 'undergrad',
+                        'grad': 'grad',
+                        'gap-year': 'gap year',
+                        'dropout': 'dropout'
+                    };
+                    const userStatus = statusMap[status];
+                    const jobGraduation = job.graduation.toLowerCase();
+                    
+                    if (userStatus === 'grad' && jobGraduation.includes('grads only') && !jobGraduation.includes('undergrad')) {
+                        // Acceptable
+                    } else if (userStatus === 'undergrad' && jobGraduation.includes('undergrads')) {
+                        // Acceptable
+                    } else if (jobGraduation.includes(userStatus) || 
+                              jobGraduation.includes('all') || 
+                              jobGraduation.includes('welcome') ||
+                              jobGraduation.includes('undergrads /grads/ gap year / dropouts')) {
+                        // Acceptable
+                    } else {
+                        matchScore -= 30; // Significant penalty but still show
+                    }
+                    
+                    // 3. English level check WITH FLEXIBILITY
+                    const jobLanguageReq = job.languageRequirement || 'B1';
+                    const jobEnglishLevel = languageLevels[jobLanguageReq] || 1;
+                    
+                    if (userEnglishLevel >= jobEnglishLevel) {
+                        // Perfect match or higher level
+                        if (userEnglishLevel === jobEnglishLevel) {
+                            // Exact match - no penalty
+                        } else {
+                            matchScore -= 5; // Higher level than required - small penalty
+                        }
+                    } else {
+                        // User level is lower than required
+                        if (isFlexibleLanguage) {
+                            // Check if it's a close language level
+                            const closeLevels = languageProximity[english] || [];
+                            if (closeLevels.includes(jobLanguageReq)) {
+                                // Close language match
+                                isCloseLanguage = true;
+                                const levelDiff = jobEnglishLevel - userEnglishLevel;
+                                matchScore -= (levelDiff * 15); // Deduct points based on level difference
+                            } else {
+                                // Not a close match
+                                return false; // Skip job
+                            }
+                        } else {
+                            return false; // Skip job if not flexible
+                        }
+                    }
+                    
+                    // 4. Location check WITH FLEXIBILITY
+                    const jobLocation = job.location.toLowerCase();
+                    const userLocation = location;
+                    
+                    // Check if it's a remote job
+                    const isRemoteJob = jobLocation.includes('work from home') || 
+                                        jobLocation.includes('wfh') || 
+                                        job.locationType === 'remote';
+                    
+                    if (userLocation === 'remote') {
+                        if (!isRemoteJob) {
+                            if (isFlexibleLocation) {
+                                matchScore -= 20; // Show office jobs when looking for remote
+                                isNearbyLocation = true;
+                            } else {
+                                return false; // Skip if not flexible
+                            }
+                        }
+                    } else if (userLocation === 'any') {
+                        // Accept any location
+                    } else {
+                        // Check if job location is in user's preferred area or nearby
+                        const preferredLocations = locationProximity[userLocation] || [userLocation];
+                        let locationMatch = false;
+                        
+                        for (const loc of preferredLocations) {
+                            if (jobLocation.includes(loc.replace('-', ' '))) {
+                                locationMatch = true;
+                                if (loc === userLocation) {
+                                    // Exact location match - no penalty
+                                } else {
+                                    // Nearby location
+                                    isNearbyLocation = true;
+                                    matchScore -= 10;
+                                }
+                                break;
+                            }
+                        }
+                        
+                        if (!locationMatch) {
+                            if (isFlexibleLocation) {
+                                // Check if it's at least in the same city
+                                if ((userLocation.includes('cairo') && jobLocation.includes('cairo')) ||
+                                    (userLocation.includes('alex') && jobLocation.includes('alex'))) {
+                                    isNearbyLocation = true;
+                                    matchScore -= 25; // Significant penalty for different area
+                                } else if (isRemoteJob) {
+                                    // Show remote jobs when looking for office
+                                    isNearbyLocation = true;
+                                    matchScore -= 20;
+                                } else {
+                                    return false; // Skip if not in same city and not flexible
+                                }
+                            } else {
+                                return false; // Skip if not flexible
+                            }
+                        }
+                    }
+                    
+                    // 5. Nationality check
+                    const jobNationality = job.nationality.toLowerCase();
+                    if (nationality === 'egyptian' && jobNationality.includes('egyptians only')) {
+                        // Acceptable
+                    } else if (nationality === 'foreigner' && jobNationality.includes('foreigners')) {
+                        // Acceptable
+                    } else if (nationality === 'both' && (jobNationality.includes('egyptians') || jobNationality.includes('foreigners'))) {
+                        // Acceptable
+                    } else if (jobNationality.includes('egyptians / foreigners')) {
+                        // Acceptable for all
+                    } else {
+                        matchScore -= 40; // Significant penalty but still show
+                    }
+                    
+                    // 6. Experience check
+                    if (experience === 'none' && job.details.toLowerCase().includes('experience') && 
+                        !job.details.toLowerCase().includes('no experience')) {
+                        matchScore -= 20; // Penalty for lack of experience
+                    }
+                    
+                    // Set match indicators on job object
+                    job.isNearbyLocation = isNearbyLocation;
+                    job.isCloseLanguage = isCloseLanguage;
+                    job.matchScore = Math.max(30, matchScore); // Ensure minimum 30% match
+                    
+                    return job.matchScore >= 50; // Only show jobs with at least 50% match
+                });
+                
+                // Sort by match score (highest first)
+                filteredJobs.sort((a, b) => b.matchScore - a.matchScore);
+                
+                // Display results
+                displayResults();
+                
+                // Hide loading spinner
+                loadingSpinner.style.display = 'none';
+            }, 800);
+        }
+
+        // Display filtered job results
+        function displayResults() {
+            resultsGrid.innerHTML = '';
+            
+            if (filteredJobs.length === 0) {
+                noResults.style.display = 'block';
+                matchCount.textContent = '0 matches';
+                return;
+            }
+            
+            matchCount.textContent = `${filteredJobs.length} ${filteredJobs.length === 1 ? 'match' : 'matches'}`;
+            
+            filteredJobs.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card';
+                
+                // Determine match level for color coding
+                let matchLevel = 'match-low';
+                if (job.matchScore >= 85) matchLevel = 'match-high';
+                else if (job.matchScore >= 65) matchLevel = 'match-medium';
+                
+                // Add badges for nearby locations and close language matches
+                let badges = '';
+                if (job.isNearbyLocation) {
+                    badges += '<div class="badge badge-nearby">Nearby Location</div>';
+                }
+                if (job.isCloseLanguage) {
+                    badges += '<div class="badge badge-language-match">Close Language Match</div>';
+                }
+                
+                jobCard.innerHTML = `
+                    ${badges}
+                    <div class="job-status status-${job.status.toLowerCase()}">${job.status}</div>
+                    <h3 class="job-company">${job.company}</h3>
+                    <p class="job-account">${job.account}</p>
+                    <div class="job-details">
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>${job.shifts.substring(0, 30)}${job.shifts.length > 30 ? '...' : ''}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${job.location.substring(0, 30)}${job.location.length > 30 ? '...' : ''}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>Max Age: ${job.maxAge}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>${job.salary.substring(0, 30)}${job.salary.length > 30 ? '...' : ''}</span>
+                        </div>
+                    </div>
+                    <div class="match-indicators">
+                        ${job.isNearbyLocation ? '<div class="match-indicator match-location"><i class="fas fa-map-marker-alt"></i> Nearby</div>' : ''}
+                        ${job.isCloseLanguage ? '<div class="match-indicator match-language"><i class="fas fa-language"></i> Close Language</div>' : ''}
+                    </div>
+                    <div class="filter-tags">
+                        <span class="filter-tag">${job.nationality}</span>
+                        <span class="filter-tag">${job.graduation.split(' ')[0]}</span>
+                        <span class="filter-tag">${job.languageRequirement || 'B1'}+</span>
+                    </div>
+                    <div class="job-match">
+                        <div class="match-percentage ${matchLevel}">${job.matchScore}% Match</div>
+                        <button class="btn-view" onclick="viewJobDetails(${job.id})">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                `;
+                
+                resultsGrid.appendChild(jobCard);
+            });
+        }
+
+        // View job details in modal
+        function viewJobDetails(jobId) {
+            const job = jobOffers.find(j => j.id === jobId);
+            
+            if (!job) return;
+            
+            modalContent.innerHTML = `
+                <div class="modal-job-header">
+                    <div class="job-status status-${job.status.toLowerCase()}">${job.status}</div>
+                    <h2>${job.company}</h2>
+                    <p class="job-account">${job.account}</p>
+                </div>
+                
+                <div class="modal-job-details">
+                    <div class="detail-box">
+                        <h4><i class="fas fa-info-circle"></i> Job Details</h4>
+                        <p><strong>Shifts:</strong> ${job.shifts}</p>
+                        <p><strong>Interview:</strong> ${job.interview}</p>
+                        <p><strong>Training:</strong> ${job.training}</p>
+                        <p><strong>Process:</strong> ${job.process}</p>
+                    </div>
+                    
+                    <div class="detail-box">
+                        <h4><i class="fas fa-user-check"></i> Requirements</h4>
+                        <p><strong>Graduation:</strong> ${job.graduation}</p>
+                        <p><strong>Nationality:</strong> ${job.nationality}</p>
+                        <p><strong>Max Age:</strong> ${job.maxAge}</p>
+                        <p><strong>Language:</strong> ${job.language}</p>
+                    </div>
+                    
+                    <div class="detail-box">
+                        <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+                        <p>${job.location}</p>
+                        <p><strong>Salary:</strong> ${job.salary}</p>
+                    </div>
+                </div>
+                
+                <div class="offer-details">
+                    <h4><i class="fas fa-file-alt"></i> Offer Details</h4>
+                    <p>${job.details}</p>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <button class="btn btn-primary" style="width: 100%;" onclick="applyForJob(${job.id})">
+                            <i class="fas fa-paper-plane"></i> Apply for This Position
+                        </button>
+                        <p style="margin-top: 10px; font-size: 12px; color: var(--text-secondary);">
+                            <i class="fas fa-info-circle"></i> This job matches ${job.matchScore || '100'}% of your profile
+                            ${job.isNearbyLocation ? '<br><i class="fas fa-map-marker-alt"></i> This job is in a nearby location' : ''}
+                            ${job.isCloseLanguage ? '<br><i class="fas fa-language"></i> Language requirement is close to your level' : ''}
+                        </p>
+                    </div>
+                </div>
+            `;
+            
+            jobModal.style.display = 'block';
+        }
+
+        // Apply for a job
+        function applyForJob(jobId) {
+            const job = jobOffers.find(j => j.id === jobId);
+            alert(`Application submitted for ${job.company} - ${job.account} position!\n\nOur recruitment team will contact you soon.`);
+            jobModal.style.display = 'none';
+        }
+
+        // Clear form
+        function clearForm() {
+            profileForm.reset();
+            document.getElementById('age').value = 25;
+            document.getElementById('status').value = 'grad';
+            document.getElementById('english').value = 'B2';
+            document.getElementById('location').value = 'nasr-city';
+            document.getElementById('nationality').value = 'egyptian';
+            document.getElementById('experience').value = '0-1';
+            flexibleLanguage.checked = true;
+            flexibleLocation.checked = true;
+            flexibleAge.checked = true;
+            ageWarning.style.display = 'none';
+            
+            resultsGrid.innerHTML = '';
+            noResults.style.display = 'block';
+            matchCount.textContent = '0 matches';
+        }
+
+        // Reset filters and show all jobs
+        function resetFilters() {
+            clearForm();
+            filteredJobs = [...jobOffers];
+            filteredJobs.forEach(job => {
+                job.matchScore = 85;
+                job.isNearbyLocation = false;
+                job.isCloseLanguage = false;
+            });
+            displayResults();
+        }
+    </script>
+</body>
+</html>
