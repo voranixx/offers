@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VORANIX | Where Power Hires Power</title>
+    <title>VORANIX | Offers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -101,6 +101,64 @@
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
+        }
+        
+        /* Language Selection */
+        .language-selection {
+            background-color: var(--voranix-gray);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+        }
+        
+        .language-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .language-option {
+            background-color: var(--voranix-light-gray);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            width: 180px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .language-option:hover {
+            transform: translateY(-5px);
+            border-color: var(--voranix-red-light);
+            box-shadow: 0 5px 15px rgba(227, 0, 11, 0.2);
+        }
+        
+        .language-option.selected {
+            border-color: var(--voranix-red);
+            background-color: rgba(227, 0, 11, 0.1);
+            box-shadow: 0 0 15px rgba(227, 0, 11, 0.3);
+        }
+        
+        .language-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: var(--voranix-red);
+        }
+        
+        .language-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .language-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
         }
         
         /* Profile Form */
@@ -536,6 +594,16 @@
                 font-size: 28px;
                 letter-spacing: 3px;
             }
+            
+            .language-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .language-option {
+                width: 100%;
+                max-width: 300px;
+            }
         }
         
         /* Loading Spinner */
@@ -603,6 +671,12 @@
             color: var(--voranix-red);
             border: 1px solid rgba(227, 0, 11, 0.3);
         }
+        
+        .badge-high-salary {
+            background-color: rgba(241, 196, 15, 0.2);
+            color: var(--voranix-yellow);
+            border: 1px solid rgba(241, 196, 15, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -629,6 +703,34 @@
                 <p>Tell us about yourself and we'll find the most suitable job offers from VORANIX's extensive network of opportunities.</p>
             </div>
             
+            <!-- Language Selection -->
+            <section class="language-selection">
+                <h2 class="section-title"><i class="fas fa-language"></i> Select Your Target Language</h2>
+                <p style="text-align: center; margin-bottom: 20px; color: var(--text-secondary);">Choose the language you want to apply for to see the most relevant offers</p>
+                <div class="language-options">
+                    <div class="language-option" data-language="arabic">
+                        <div class="language-icon">🇪🇬</div>
+                        <div class="language-name">Arabic</div>
+                        <div class="language-desc">Customer Service Account</div>
+                    </div>
+                    <div class="language-option" data-language="spanish">
+                        <div class="language-icon">🇪🇸</div>
+                        <div class="language-name">Spanish</div>
+                        <div class="language-desc">Bilingual Account</div>
+                    </div>
+                    <div class="language-option selected" data-language="english">
+                        <div class="language-icon">🇺🇸</div>
+                        <div class="language-name">English</div>
+                        <div class="language-desc">Multiple Accounts</div>
+                    </div>
+                    <div class="language-option" data-language="any">
+                        <div class="language-icon">🌍</div>
+                        <div class="language-name">Any Language</div>
+                        <div class="language-desc">All Available Offers</div>
+                    </div>
+                </div>
+            </section>
+            
             <!-- Profile Form -->
             <section class="profile-form-section">
                 <h2 class="section-title"><i class="fas fa-user-cog"></i> Your Profile</h2>
@@ -653,6 +755,21 @@
                         <div class="form-group">
                             <label for="english">English Level</label>
                             <select id="english" required>
+                                <option value="A1">A1 (Beginner)</option>
+                                <option value="A2">A2 (Elementary)</option>
+                                <option value="B1">B1 (Intermediate)</option>
+                                <option value="B2">B2 (Upper Intermediate)</option>
+                                <option value="C1">C1 (Advanced)</option>
+                                <option value="C2">C2 (Proficient)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="spanish">Spanish Level (Optional)</label>
+                            <select id="spanish">
+                                <option value="none">No Spanish</option>
+                                <option value="A1">A1 (Beginner)</option>
+                                <option value="A2">A2 (Elementary)</option>
                                 <option value="B1">B1 (Intermediate)</option>
                                 <option value="B2">B2 (Upper Intermediate)</option>
                                 <option value="C1">C1 (Advanced)</option>
@@ -761,10 +878,16 @@
     </div>
     
     <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">VORANIX</div>
+            <div class="footer-tagline">Connecting Talent with Opportunity</div>
+            <div class="copyright">© 2023 VORANIX. All rights reserved.</div>
+        </div>
     </footer>
     
     <script>
-        // Job offers data - extracted from the provided text
+        // Job offers data - extracted from the provided text with new offers added
         const jobOffers = [
             {
                 id: 1,
@@ -783,7 +906,8 @@
                 process: "They Receive a Call Interview",
                 training: "30 days",
                 details: "Customer Service Representative position with salary up to 18,500 EGP NET. Benefits include paid training, social & medical insurance, transportation provided, and gym access. Egyptians only with English B1+ to C1 level. Graduates, dropouts, gap-year students, and undergrads welcome.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
             },
             {
                 id: 2,
@@ -802,7 +926,8 @@
                 process: "Validation, then phone interview",
                 training: "30 Days",
                 details: "Call Center Agent / Cold Calling position working from home. Must be located in Egypt. Payment in USD. Salary package: 20,000 EGP Net + Unlimited commissions. No experience required but preferred. Weekly & monthly performance bonuses. Flexible, remote work environment.",
-                locationType: "remote"
+                locationType: "remote",
+                targetLanguage: "english"
             },
             {
                 id: 3,
@@ -821,7 +946,8 @@
                 process: "Validation, then assessment, then virtual interview",
                 training: "30 days",
                 details: "Bilingual French Customer Service Account - call center role (voice customer support). Onsite interview (candidates will first receive a call from the recruitment team). No previous experience required. Egyptians only. Graduates only. Requirements: French C1, English B2.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "french"
             },
             {
                 id: 4,
@@ -840,7 +966,8 @@
                 process: "They directly go to the interview after filling the form",
                 training: "2 Weeks",
                 details: "Travel Industry Telesales (Opener) position. Requirements: English level B2–C1 (must). Minimum 3 months telesales experience (travel industry is a must). Offer: Basic salary 9K – 15K (based on experience). Transportation allowance included. Commission: $1 per night.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
             },
             {
                 id: 5,
@@ -859,7 +986,8 @@
                 process: "Virtual Interview",
                 training: "3 days",
                 details: "Upselling Specialist (Remote). VORANIX is expanding, and we're looking for confident, high-energy sales talent. Requirements: Strong experience in sales or cold calling, C1 English level, comfortable with high-volume outbound calls, competitive mindset and strong closing skills. Shift: 6 PM – 3 AM Egypt time.",
-                locationType: "remote"
+                locationType: "remote",
+                targetLanguage: "english"
             },
             {
                 id: 6,
@@ -878,7 +1006,8 @@
                 process: "They directly go to the interview after filling the form",
                 training: "2 Weeks",
                 details: "Telesales position with salary 15K – 20K NET + Uncapped USD Commission (Avg 350$). Requirements: C1 English level, graduates/dropouts/gap year, previous sales experience, flexibility with night shifts. Benefits: Social & Medical insurance after 6 months, strong learning & development curve.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
             },
             {
                 id: 7,
@@ -897,7 +1026,8 @@
                 process: "They Receive a Call Interview",
                 training: "30 days",
                 details: "Business developer representatives for an appointment setter US account. Immediate hiring! Net salary: 345$, Transportation allowance:42$, KPIs:30$, commission in dollars. Medical and social and contract after 3 months probation. Saturday and Sunday off. Shift: 3.30 pm till 12:30 am.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
             },
             {
                 id: 8,
@@ -916,7 +1046,8 @@
                 process: "They directly go to the interview after filling the form",
                 training: "30 days",
                 details: "Telesales Agents for a UK Account. Requirements: Excellent to Fluent English (B2–C1 Level), British Accent (Preferably), No experience needed, Egyptians only (19–28 years old). Salary: 12,000 EGP Net + 1,000 EGP KPIs bonus + Unlimited Commissions. Paid Training. Fixed Shift: 12:00 PM – 8:00 PM.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
             },
             {
                 id: 9,
@@ -935,7 +1066,8 @@
                 process: "They Receive a Call Interview",
                 training: "1 Month",
                 details: "English Cold Calling Agents. We are expanding our English Account and looking for confident, motivated Cold Calling Agents. Fluent English (B2+ or C1 level). Experience in Telesales or Cold Calling is a strong advantage. Foreigners can apply only if they have an active bank account in Egypt.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
             },
             {
                 id: 10,
@@ -954,7 +1086,8 @@
                 process: "They receive a phone call interview",
                 training: "2 weeks",
                 details: "Full-Time Acquisition Specialist (Remote). Shift: 4:00 PM – 12:00 AM (Cairo time). Salary: 215 EGP/hour + attractive commission (Average 35,000 EGP/month once fully active). Requirements: Excellent English skills (C1–C2 level, written & spoken), previous experience in real estate roles is a MUST. Foreigners can apply.",
-                locationType: "remote"
+                locationType: "remote",
+                targetLanguage: "english"
             },
             {
                 id: 11,
@@ -973,7 +1106,8 @@
                 process: "They Receive a Call Interview",
                 training: "30 Days",
                 details: "Hotel Survey Agent position. Requirements: Fluent English Speakers, Call Center Experience is a plus (not required), Graduates & Undergraduates are welcome. Package: Basic Salary: 12,000 EGP, KPIS: 2000 EGP, Unlimited Commission, Performance Bonus, Medical Insurance After 3 Months.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
             },
             {
                 id: 12,
@@ -992,7 +1126,8 @@
                 process: "They directly go to the interview after filling the form",
                 training: "2 Weeks",
                 details: "Food hub offer: 12k basic + 3k kpis+ 1k sales bonus + 1k medical insurance. Basic 17k + unlimited commission. Transportation provided. Grads only, males only. Fixed Shifts: from 2pm to 11pm. Paid training. Experience: minimum 6 months in telesales.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
             },
             {
                 id: 13,
@@ -1011,7 +1146,8 @@
                 process: "They directly go to the interview after filling the form",
                 training: "2 Weeks",
                 details: "Travel Advisor position with opportunities for growth. Requirements: B2/C1 English level, experience in travel industry preferred but not required. Fixed shifts with competitive salary and commission structure.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
             },
             {
                 id: 14,
@@ -1030,7 +1166,8 @@
                 process: "They directly go to the interview after filling the form",
                 training: "3 weeks",
                 details: "Fluent/Excellent English Speakers for Telesales Vacancy in USA Campaign. No experience needed. Graduates & Undergraduates are welcome. Working days: Monday - Friday. Saturdays and Sundays are OFF. 5 Days Training (Paid).",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
             },
             {
                 id: 15,
@@ -1049,7 +1186,51 @@
                 process: "They directly go to the interview after filling the form",
                 training: "1~2 Weeks",
                 details: "Telesales Agent position. Requirements: B2+ / C1 English level. Experience in telesales is preferred. Fixed evening shifts with competitive basic salary plus KPIs.",
-                locationType: "office"
+                locationType: "office",
+                targetLanguage: "english"
+            },
+            // NEW ARABIC OFFER
+            {
+                id: 16,
+                status: "Active",
+                company: "Octopus",
+                account: "Arabic Account",
+                shifts: "Rotational Shifts (From 12Pm to 4Pm)",
+                interview: "They directly go to the interview after filling the form",
+                location: "Alexandria",
+                graduation: "undergrads /grads/ gap year / dropouts",
+                nationality: "Egyptians Only",
+                maxAge: 38,
+                language: "A2/B1 English",
+                languageRequirement: "A2",
+                salary: "7,000 – 8,000 EGP (based on interview)",
+                process: "Direct interview after form submission",
+                training: "Paid training",
+                details: "🚀 We're Hiring – Arabic Account 🚀\n\n🔄 Flexible rotational shifts (24/7) and days off – Males & Females\n🎓 Graduates / Undergraduates (no commitments)\n🗣️ English Level: A2 or B1\n💰 Salary: 7,000 – 8,000 EGP (based on interview)\n⏳ No commitments for the upcoming period\n🚗 Transportation provided and door to door for Females starting 12Am\n✅ No experience needed\n📍 Location: Alexandria\n🚀 Ready to start immediately",
+                locationType: "office",
+                targetLanguage: "arabic"
+            },
+            // NEW SPANISH OFFER
+            {
+                id: 17,
+                status: "Active",
+                company: "Octopus",
+                account: "Spanish Account (Bilingual)",
+                shifts: "Rotational Shifts",
+                interview: "Phone Interview",
+                location: "Alexandria",
+                graduation: "undergrads /grads/ gap year / dropouts",
+                nationality: "Egyptians Only",
+                maxAge: 38,
+                language: "B2 Spanish, B1 English",
+                languageRequirement: "B2",
+                salary: "23,000 – 25,000 EGP (Based on language proficiency)",
+                process: "They Receive a Call Interview",
+                training: "Paid training",
+                details: "🚀 We're Hiring – Spanish Account (Bilingual)🚀\n\n🔄 Flexible rotational shifts (24/7) and days off – Males & Females\n🎓 Graduates / Undergraduates (no commitments)\n🗣️ B2 Spanish/English B1\n💰 Salary: 23,000 – 25,000 EGP (Based on language proficiency)\n🚗 Transportation provided and door to door for Females starting 12Am\n✅ No experience required\n📍 Location: Alexandria\n🚀 Ready to start immediately",
+                locationType: "office",
+                targetLanguage: "spanish",
+                requiresSpanish: true
             }
         ];
 
@@ -1069,9 +1250,11 @@
         const flexibleLanguage = document.getElementById('flexibleLanguage');
         const flexibleLocation = document.getElementById('flexibleLocation');
         const flexibleAge = document.getElementById('flexibleAge');
+        const languageOptions = document.querySelectorAll('.language-option');
 
         // Current filtered jobs
         let filteredJobs = [];
+        let selectedLanguage = 'english'; // Default language
 
         // Location proximity mapping
         const locationProximity = {
@@ -1085,20 +1268,24 @@
             'any': ['nasr-city', 'maadi', 'sheikh-zayed', 'new-cairo', 'downtown', 'alexandria', 'remote', 'wfh']
         };
 
-        // Language level mapping with flexibility
+        // Language level mapping with flexibility (including A1, A2)
         const languageLevels = {
-            'B1': 1,
-            'B2': 2,
-            'C1': 3,
-            'C2': 4
+            'A1': 0,
+            'A2': 1,
+            'B1': 2,
+            'B2': 3,
+            'C1': 4,
+            'C2': 5
         };
         
         // Language proximity - which levels are close to each other
         const languageProximity = {
-            'B1': ['B1', 'B2'], // B1 is close to B1 and B2
-            'B2': ['B1', 'B2', 'C1'], // B2 is close to B1, B2, and C1
-            'C1': ['B2', 'C1', 'C2'], // C1 is close to B2, C1, and C2
-            'C2': ['C1', 'C2'] // C2 is close to C1 and C2
+            'A1': ['A1', 'A2'],
+            'A2': ['A1', 'A2', 'B1'],
+            'B1': ['A2', 'B1', 'B2'],
+            'B2': ['B1', 'B2', 'C1'],
+            'C1': ['B2', 'C1', 'C2'],
+            'C2': ['C1', 'C2']
         };
 
         // Initialize page
@@ -1107,6 +1294,7 @@
             document.getElementById('age').value = 25;
             document.getElementById('status').value = 'grad';
             document.getElementById('english').value = 'B2';
+            document.getElementById('spanish').value = 'none';
             document.getElementById('location').value = 'nasr-city';
             document.getElementById('nationality').value = 'egyptian';
             document.getElementById('experience').value = '0-1';
@@ -1115,6 +1303,20 @@
             flexibleLanguage.checked = true;
             flexibleLocation.checked = true;
             flexibleAge.checked = true;
+            
+            // Add event listeners for language selection
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    languageOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Update selected language
+                    selectedLanguage = this.getAttribute('data-language');
+                });
+            });
             
             // Add event listeners
             profileForm.addEventListener('submit', findMatchingJobs);
@@ -1154,6 +1356,7 @@
             const age = parseInt(document.getElementById('age').value);
             const status = document.getElementById('status').value;
             const english = document.getElementById('english').value;
+            const spanish = document.getElementById('spanish').value;
             const location = document.getElementById('location').value;
             const nationality = document.getElementById('nationality').value;
             const experience = document.getElementById('experience').value;
@@ -1165,10 +1368,16 @@
             
             // User's English level
             const userEnglishLevel = languageLevels[english];
+            const userSpanishLevel = languageLevels[spanish] || -1;
             
             // Filter jobs (simulate loading with timeout)
             setTimeout(() => {
                 filteredJobs = jobOffers.filter(job => {
+                    // First filter by selected language
+                    if (selectedLanguage !== 'any' && job.targetLanguage !== selectedLanguage) {
+                        return false;
+                    }
+                    
                     let matchScore = 100; // Start with 100%
                     let isMatch = true;
                     let isNearbyLocation = false;
@@ -1210,33 +1419,53 @@
                         matchScore -= 30; // Significant penalty but still show
                     }
                     
-                    // 3. English level check WITH FLEXIBILITY
+                    // 3. Language check based on job type
                     const jobLanguageReq = job.languageRequirement || 'B1';
                     const jobEnglishLevel = languageLevels[jobLanguageReq] || 1;
                     
-                    if (userEnglishLevel >= jobEnglishLevel) {
-                        // Perfect match or higher level
-                        if (userEnglishLevel === jobEnglishLevel) {
-                            // Exact match - no penalty
+                    // For Spanish jobs, check Spanish level
+                    if (job.targetLanguage === 'spanish' && job.requiresSpanish) {
+                        if (userSpanishLevel >= languageLevels['B2']) {
+                            // User has sufficient Spanish level
+                            matchScore += 20; // Bonus for Spanish proficiency
+                        } else if (userSpanishLevel >= languageLevels['B1']) {
+                            // User has some Spanish
+                            matchScore -= 10;
                         } else {
-                            matchScore -= 5; // Higher level than required - small penalty
-                        }
-                    } else {
-                        // User level is lower than required
-                        if (isFlexibleLanguage) {
-                            // Check if it's a close language level
-                            const closeLevels = languageProximity[english] || [];
-                            if (closeLevels.includes(jobLanguageReq)) {
-                                // Close language match
-                                isCloseLanguage = true;
-                                const levelDiff = jobEnglishLevel - userEnglishLevel;
-                                matchScore -= (levelDiff * 15); // Deduct points based on level difference
+                            // User doesn't have required Spanish level
+                            if (isFlexibleLanguage) {
+                                matchScore -= 40; // Heavy penalty
                             } else {
-                                // Not a close match
-                                return false; // Skip job
+                                return false; // Skip if not flexible
+                            }
+                        }
+                    }
+                    // For English or Arabic jobs, check English level
+                    else if (job.targetLanguage === 'english' || job.targetLanguage === 'arabic') {
+                        if (userEnglishLevel >= jobEnglishLevel) {
+                            // Perfect match or higher level
+                            if (userEnglishLevel === jobEnglishLevel) {
+                                // Exact match - no penalty
+                            } else {
+                                matchScore -= 5; // Higher level than required - small penalty
                             }
                         } else {
-                            return false; // Skip job if not flexible
+                            // User level is lower than required
+                            if (isFlexibleLanguage) {
+                                // Check if it's a close language level
+                                const closeLevels = languageProximity[english] || [];
+                                if (closeLevels.includes(jobLanguageReq)) {
+                                    // Close language match
+                                    isCloseLanguage = true;
+                                    const levelDiff = jobEnglishLevel - userEnglishLevel;
+                                    matchScore -= (levelDiff * 15); // Deduct points based on level difference
+                                } else {
+                                    // Not a close match
+                                    return false; // Skip job
+                                }
+                            } else {
+                                return false; // Skip job if not flexible
+                            }
                         }
                     }
                     
@@ -1319,10 +1548,15 @@
                         matchScore -= 20; // Penalty for lack of experience
                     }
                     
+                    // 7. Bonus for high salary jobs (like Spanish account)
+                    if (job.salary.includes('23,000') || job.salary.includes('25,000')) {
+                        matchScore += 15; // Bonus for high salary offers
+                    }
+                    
                     // Set match indicators on job object
                     job.isNearbyLocation = isNearbyLocation;
                     job.isCloseLanguage = isCloseLanguage;
-                    job.matchScore = Math.max(30, matchScore); // Ensure minimum 30% match
+                    job.matchScore = Math.max(30, Math.min(100, matchScore)); // Ensure between 30-100% match
                     
                     return job.matchScore >= 50; // Only show jobs with at least 50% match
                 });
@@ -1359,7 +1593,7 @@
                 if (job.matchScore >= 85) matchLevel = 'match-high';
                 else if (job.matchScore >= 65) matchLevel = 'match-medium';
                 
-                // Add badges for nearby locations and close language matches
+                // Add badges for special offers
                 let badges = '';
                 if (job.isNearbyLocation) {
                     badges += '<div class="badge badge-nearby">Nearby Location</div>';
@@ -1367,12 +1601,15 @@
                 if (job.isCloseLanguage) {
                     badges += '<div class="badge badge-language-match">Close Language Match</div>';
                 }
+                if (job.salary.includes('23,000') || job.salary.includes('25,000')) {
+                    badges += '<div class="badge badge-high-salary">High Salary</div>';
+                }
                 
                 jobCard.innerHTML = `
                     ${badges}
                     <div class="job-status status-${job.status.toLowerCase()}">${job.status}</div>
                     <h3 class="job-company">${job.company}</h3>
-                    <p class="job-account">${job.account}</p>
+                    <p class="job-account">${job.account} ${job.targetLanguage === 'spanish' ? '🇪🇸' : job.targetLanguage === 'arabic' ? '🇪🇬' : job.targetLanguage === 'french' ? '🇫🇷' : '🇺🇸'}</p>
                     <div class="job-details">
                         <div class="detail-item">
                             <i class="fas fa-clock"></i>
@@ -1394,11 +1631,14 @@
                     <div class="match-indicators">
                         ${job.isNearbyLocation ? '<div class="match-indicator match-location"><i class="fas fa-map-marker-alt"></i> Nearby</div>' : ''}
                         ${job.isCloseLanguage ? '<div class="match-indicator match-language"><i class="fas fa-language"></i> Close Language</div>' : ''}
+                        ${job.targetLanguage === 'spanish' ? '<div class="match-indicator" style="background-color: rgba(241, 196, 15, 0.1); color: var(--voranix-yellow); border: 1px solid rgba(241, 196, 15, 0.3);"><i class="fas fa-star"></i> Spanish</div>' : ''}
+                        ${job.targetLanguage === 'arabic' ? '<div class="match-indicator" style="background-color: rgba(46, 204, 113, 0.1); color: var(--voranix-green); border: 1px solid rgba(46, 204, 113, 0.3);"><i class="fas fa-star"></i> Arabic</div>' : ''}
                     </div>
                     <div class="filter-tags">
                         <span class="filter-tag">${job.nationality}</span>
                         <span class="filter-tag">${job.graduation.split(' ')[0]}</span>
                         <span class="filter-tag">${job.languageRequirement || 'B1'}+</span>
+                        <span class="filter-tag">${job.targetLanguage.toUpperCase()}</span>
                     </div>
                     <div class="job-match">
                         <div class="match-percentage ${matchLevel}">${job.matchScore}% Match</div>
@@ -1421,7 +1661,7 @@
             modalContent.innerHTML = `
                 <div class="modal-job-header">
                     <div class="job-status status-${job.status.toLowerCase()}">${job.status}</div>
-                    <h2>${job.company}</h2>
+                    <h2>${job.company} ${job.targetLanguage === 'spanish' ? '🇪🇸' : job.targetLanguage === 'arabic' ? '🇪🇬' : job.targetLanguage === 'french' ? '🇫🇷' : '🇺🇸'}</h2>
                     <p class="job-account">${job.account}</p>
                 </div>
                 
@@ -1440,18 +1680,20 @@
                         <p><strong>Nationality:</strong> ${job.nationality}</p>
                         <p><strong>Max Age:</strong> ${job.maxAge}</p>
                         <p><strong>Language:</strong> ${job.language}</p>
+                        <p><strong>Target Language:</strong> ${job.targetLanguage.toUpperCase()}</p>
                     </div>
                     
                     <div class="detail-box">
                         <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
                         <p>${job.location}</p>
                         <p><strong>Salary:</strong> ${job.salary}</p>
+                        ${job.targetLanguage === 'spanish' ? '<p><strong style="color: var(--voranix-yellow);">High Salary Opportunity!</strong></p>' : ''}
                     </div>
                 </div>
                 
                 <div class="offer-details">
                     <h4><i class="fas fa-file-alt"></i> Offer Details</h4>
-                    <p>${job.details}</p>
+                    <p style="white-space: pre-line;">${job.details}</p>
                     <div style="margin-top: 20px; text-align: center;">
                         <button class="btn btn-primary" style="width: 100%;" onclick="applyForJob(${job.id})">
                             <i class="fas fa-paper-plane"></i> Apply for This Position
@@ -1460,6 +1702,7 @@
                             <i class="fas fa-info-circle"></i> This job matches ${job.matchScore || '100'}% of your profile
                             ${job.isNearbyLocation ? '<br><i class="fas fa-map-marker-alt"></i> This job is in a nearby location' : ''}
                             ${job.isCloseLanguage ? '<br><i class="fas fa-language"></i> Language requirement is close to your level' : ''}
+                            ${job.targetLanguage === 'spanish' ? '<br><i class="fas fa-star"></i> High salary Spanish opportunity' : ''}
                         </p>
                     </div>
                 </div>
@@ -1481,6 +1724,7 @@
             document.getElementById('age').value = 25;
             document.getElementById('status').value = 'grad';
             document.getElementById('english').value = 'B2';
+            document.getElementById('spanish').value = 'none';
             document.getElementById('location').value = 'nasr-city';
             document.getElementById('nationality').value = 'egyptian';
             document.getElementById('experience').value = '0-1';
@@ -1488,6 +1732,11 @@
             flexibleLocation.checked = true;
             flexibleAge.checked = true;
             ageWarning.style.display = 'none';
+            
+            // Reset language selection to English
+            languageOptions.forEach(opt => opt.classList.remove('selected'));
+            document.querySelector('.language-option[data-language="english"]').classList.add('selected');
+            selectedLanguage = 'english';
             
             resultsGrid.innerHTML = '';
             noResults.style.display = 'block';
